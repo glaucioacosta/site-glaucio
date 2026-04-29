@@ -7,6 +7,7 @@ const WPP = 'https://wa.me/5511990270978?text=Ol%C3%A1%20Glaucio%2C%20vim%20pelo
 export default function ClientEffects() {
   const [menuOpen, setMenuOpen] = useState(false);
 
+  // Hero slider
   useEffect(() => {
     const slides = document.querySelectorAll('.hero-slide');
     const dots = document.querySelectorAll('.hero-dot');
@@ -24,6 +25,24 @@ export default function ClientEffects() {
     return () => clearInterval(iv);
   }, []);
 
+  // Carousel controls
+  useEffect(() => {
+    const carousel = document.getElementById('boraCarousel');
+    const prev = document.getElementById('carouselPrev');
+    const next = document.getElementById('carouselNext');
+    if (!carousel) return;
+    const scrollAmt = 340;
+    const handlePrev = () => carousel.scrollBy({ left: -scrollAmt, behavior: 'smooth' });
+    const handleNext = () => carousel.scrollBy({ left: scrollAmt, behavior: 'smooth' });
+    prev?.addEventListener('click', handlePrev);
+    next?.addEventListener('click', handleNext);
+    return () => {
+      prev?.removeEventListener('click', handlePrev);
+      next?.removeEventListener('click', handleNext);
+    };
+  }, []);
+
+  // Navbar scroll
   useEffect(() => {
     const nb = document.getElementById('navbar');
     const fn = () => nb?.classList.toggle('scrolled', window.scrollY > 80);
@@ -31,6 +50,7 @@ export default function ClientEffects() {
     return () => window.removeEventListener('scroll', fn);
   }, []);
 
+  // Scroll reveal
   useEffect(() => {
     const obs = new IntersectionObserver(
       (es) => es.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
@@ -66,9 +86,9 @@ export default function ClientEffects() {
           </a>
           <div className="nav-links">
             <a href="#home">Home</a>
+            <a href="#empreendimentos">Empreendimentos</a>
             <a href="#bora">Bora Interlagos</a>
             <a href="#sobre">Sobre</a>
-            <a href="#empreendimentos">Empreendimentos</a>
             <a href="#contato">Contato</a>
             <a href={WPP} className="nav-cta">FALE COMIGO</a>
           </div>
@@ -80,14 +100,14 @@ export default function ClientEffects() {
 
       <div className={`mobile-menu ${menuOpen ? 'open' : ''}`}>
         <a href="#home" onClick={closeMenu}>Home</a>
+        <a href="#empreendimentos" onClick={closeMenu}>Empreendimentos</a>
         <a href="#bora" onClick={closeMenu}>Bora Interlagos</a>
         <a href="#sobre" onClick={closeMenu}>Sobre</a>
-        <a href="#empreendimentos" onClick={closeMenu}>Empreendimentos</a>
         <a href="#contato" onClick={closeMenu}>Contato</a>
         <a href={WPP} className="btn-wpp" style={{ marginTop: '12px', padding: '12px 24px' }}>💬 WhatsApp</a>
       </div>
 
-      {/* CONTACT — bottom of page */}
+      {/* CONTACT — after testimonials, before footer */}
       <section className="section contact-section" id="contato">
         <div className="container">
           <div className="text-center" style={{ marginBottom: '12px' }}>
