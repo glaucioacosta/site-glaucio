@@ -75,7 +75,6 @@ export default function Home() {
             <a href={WPP_BORA} target="_blank" rel="noopener noreferrer" className="bora-btn">QUERO SABER MAIS →</a>
           </div>
         </div>
-        {/* Carousel */}
         <div className="bora-carousel-wrap">
           <div className="bora-carousel" id="boraCarousel">
             {[
@@ -208,7 +207,39 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 9. FORMULÁRIO — handled in ClientEffects */}
+      {/* 9. FORMULÁRIO DE CONTATO */}
+      <section className="section contact-section" id="contato">
+        <div className="container">
+          <div className="text-center" style={{marginBottom:'12px'}}>
+            <div className="section-label animate">Entre em contato</div>
+            <div className="section-title animate animate-delay-1">Seu contato é <span className="accent">importante</span> para nós</div>
+          </div>
+          <div className="contact-grid">
+            <div className="contact-info">
+              <p>Entre em contato para saber mais sobre empreendimentos, áreas para incorporação ou imóveis disponíveis.</p>
+              <a href={WPP} className="btn-wpp" target="_blank" rel="noopener noreferrer">Chamar no WhatsApp</a>
+              <div className="contact-item"><div className="ci-icon">📱</div><div><div className="ci-label">WhatsApp</div><div className="ci-value">(11) 99027-0978</div></div></div>
+              <div className="contact-item"><div className="ci-icon">🏢</div><div><div className="ci-label">Empresa</div><div className="ci-value">G.Costa Gestão Imobiliária Ltda</div></div></div>
+              <div className="contact-item"><div className="ci-icon">📋</div><div><div className="ci-label">CRECI</div><div className="ci-value">148047F / 033282J</div></div></div>
+            </div>
+            <form className="contact-form" action={WPP} target="_blank">
+              <input type="text" name="name" placeholder="Nome completo" required />
+              <input type="tel" name="phone" placeholder="WhatsApp (com DDD)" required />
+              <input type="email" name="email" placeholder="E-mail" />
+              <select name="profile" defaultValue="">
+                <option value="" disabled>Eu sou...</option>
+                <option value="comprador">Comprador — quero comprar um imóvel</option>
+                <option value="corretor-parceria">Corretor — quero vender em parceria</option>
+                <option value="terreno">Tenho um terreno para incorporação</option>
+                <option value="bora">Interesse no Bora Interlagos</option>
+                <option value="outro">Outro assunto</option>
+              </select>
+              <textarea name="message" placeholder="Mensagem (opcional)" />
+              <button type="submit" className="btn-submit">ENVIAR MENSAGEM</button>
+            </form>
+          </div>
+        </div>
+      </section>
 
       {/* 10. FOOTER */}
       <footer className="footer">
