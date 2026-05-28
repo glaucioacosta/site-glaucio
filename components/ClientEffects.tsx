@@ -18,18 +18,6 @@ export default function ClientEffects() {
     return () => clearInterval(iv);
   }, []);
 
-  useEffect(() => {
-    const carousel = document.getElementById('boraCarousel');
-    const prev = document.getElementById('carouselPrev');
-    const next = document.getElementById('carouselNext');
-    if (!carousel) return;
-    const handlePrev = () => carousel.scrollBy({ left: -340, behavior: 'smooth' });
-    const handleNext = () => carousel.scrollBy({ left: 340, behavior: 'smooth' });
-    prev?.addEventListener('click', handlePrev);
-    next?.addEventListener('click', handleNext);
-    return () => { prev?.removeEventListener('click', handlePrev); next?.removeEventListener('click', handleNext); };
-  }, []);
-
   useEffect(() => { const nb = document.getElementById('navbar'); const fn = () => nb?.classList.toggle('scrolled', window.scrollY > 80); window.addEventListener('scroll', fn); return () => window.removeEventListener('scroll', fn); }, []);
 
   useEffect(() => { const obs = new IntersectionObserver((es) => es.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }), { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }); document.querySelectorAll('.animate').forEach(el => obs.observe(el)); return () => obs.disconnect(); }, []);
@@ -43,14 +31,14 @@ export default function ClientEffects() {
         <div className="container nav-inner">
           <a href="#" className="nav-logo"><img src="https://res.cloudinary.com/dxjfyykul/image/upload/v1774568724/GLAUCIO_4.jpg_1_dk7msc.jpg" alt="Glaucio Costa" /></a>
           <div className="nav-links">
-            <a href="#home">Home</a><a href="#empreendimentos">Empreendimentos</a><a href="#bora">Bora Interlagos</a><a href="#sobre">Sobre</a><a href="#contato">Contato</a>
+            <a href="#home">Home</a><a href="#sobre">Sobre</a><a href="#servicos">Serviços</a><a href="#depoimentos">Depoimentos</a><a href="#contato">Contato</a>
             <a href={WPP} className="nav-cta">FALE COMIGO</a>
           </div>
           <div className={`hamburger ${menuOpen ? 'active' : ''}`} onClick={toggleMenu}><span /><span /><span /></div>
         </div>
       </nav>
       <div className={`mobile-menu ${menuOpen ? 'open' : ''}`}>
-        <a href="#home" onClick={closeMenu}>Home</a><a href="#empreendimentos" onClick={closeMenu}>Empreendimentos</a><a href="#bora" onClick={closeMenu}>Bora Interlagos</a><a href="#sobre" onClick={closeMenu}>Sobre</a><a href="#contato" onClick={closeMenu}>Contato</a>
+        <a href="#home" onClick={closeMenu}>Home</a><a href="#sobre" onClick={closeMenu}>Sobre</a><a href="#servicos" onClick={closeMenu}>Serviços</a><a href="#depoimentos" onClick={closeMenu}>Depoimentos</a><a href="#contato" onClick={closeMenu}>Contato</a>
         <a href={WPP} className="btn-wpp" style={{ marginTop: '12px', padding: '12px 24px' }}>WhatsApp</a>
       </div>
       <div className="wpp-float">
