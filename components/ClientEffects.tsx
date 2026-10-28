@@ -2,21 +2,10 @@
 
 import { useEffect, useCallback, useState } from 'react';
 
-const WPP = 'https://wa.me/5511990270978?text=Ol%C3%A1%20Glaucio%2C%20vim%20pelo%20seu%20site%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es';
+import { WPP } from './site';
 
 export default function ClientEffects() {
   const [menuOpen, setMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const slides = document.querySelectorAll('.hero-slide');
-    const dots = document.querySelectorAll('.hero-dot');
-    if (!slides.length) return;
-    let cur = 0;
-    const go = (idx: number) => { slides[cur]?.classList.remove('active'); dots[cur]?.classList.remove('active'); cur = idx % slides.length; slides[cur]?.classList.add('active'); dots[cur]?.classList.add('active'); };
-    const iv = setInterval(() => go(cur + 1), 5000);
-    dots.forEach(d => d.addEventListener('click', () => go(Number(d.getAttribute('data-index')))));
-    return () => clearInterval(iv);
-  }, []);
 
   useEffect(() => { const nb = document.getElementById('navbar'); const fn = () => nb?.classList.toggle('scrolled', window.scrollY > 80); window.addEventListener('scroll', fn); return () => window.removeEventListener('scroll', fn); }, []);
 
@@ -29,17 +18,17 @@ export default function ClientEffects() {
     <>
       <nav className="navbar" id="navbar">
         <div className="container nav-inner">
-          <a href="#" className="nav-logo"><img src="https://res.cloudinary.com/dxjfyykul/image/upload/v1774568724/GLAUCIO_4.jpg_1_dk7msc.jpg" alt="Glaucio Costa" /></a>
+          <a href="/" className="nav-logo" aria-label="Glaucio Costa, página inicial"><img src="https://res.cloudinary.com/dxjfyykul/image/upload/v1774568724/GLAUCIO_4.jpg_1_dk7msc.jpg" alt="Glaucio Costa" /></a>
           <div className="nav-links">
-            <a href="#home">Home</a><a href="#sobre">Sobre</a><a href="#servicos">Serviços</a><a href="#depoimentos">Depoimentos</a><a href="#contato">Contato</a>
-            <a href={WPP} className="nav-cta">FALE COMIGO</a>
+            <a href="#home">Home</a><a href="#sobre">Sobre</a><a href="#servicos">Serviços</a><a href="#oportunidades">Oportunidades</a><a href="#depoimentos">Depoimentos</a><a href="#contato">Contato</a>
+            <a href={WPP} target="_blank" rel="noopener noreferrer" className="nav-cta">FALE COMIGO</a>
           </div>
-          <div className={`hamburger ${menuOpen ? 'active' : ''}`} onClick={toggleMenu}><span /><span /><span /></div>
+          <button type="button" className={`hamburger ${menuOpen ? 'active' : ''}`} onClick={toggleMenu} aria-label={menuOpen ? 'Fechar menu' : 'Abrir menu'} aria-expanded={menuOpen} aria-controls="mobile-menu"><span /><span /><span /></button>
         </div>
       </nav>
-      <div className={`mobile-menu ${menuOpen ? 'open' : ''}`}>
-        <a href="#home" onClick={closeMenu}>Home</a><a href="#sobre" onClick={closeMenu}>Sobre</a><a href="#servicos" onClick={closeMenu}>Serviços</a><a href="#depoimentos" onClick={closeMenu}>Depoimentos</a><a href="#contato" onClick={closeMenu}>Contato</a>
-        <a href={WPP} className="btn-wpp" style={{ marginTop: '12px', padding: '12px 24px' }}>WhatsApp</a>
+      <div id="mobile-menu" className={`mobile-menu ${menuOpen ? 'open' : ''}`}>
+        <a href="#home" onClick={closeMenu}>Home</a><a href="#sobre" onClick={closeMenu}>Sobre</a><a href="#servicos" onClick={closeMenu}>Serviços</a><a href="#oportunidades" onClick={closeMenu}>Oportunidades</a><a href="#depoimentos" onClick={closeMenu}>Depoimentos</a><a href="#contato" onClick={closeMenu}>Contato</a>
+        <a href={WPP} target="_blank" rel="noopener noreferrer" className="btn-wpp" style={{ marginTop: '12px', padding: '12px 24px' }}>WhatsApp</a>
       </div>
       <div className="wpp-float">
         <a href={WPP} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">

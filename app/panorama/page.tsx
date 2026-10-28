@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
-import Script from 'next/script';
 import WppButton from '@/components/panorama/WppButton';
 import LeadForm from '@/components/panorama/LeadForm';
 import PanoramaVideo from '@/components/panorama/PanoramaVideo';
@@ -44,15 +43,6 @@ const fmt = (v: number) => `R$ ${v.toLocaleString('pt-BR', { minimumFractionDigi
 export default function Panorama() {
   return (
     <div className={s.page}>
-      {/* Google tag (Google Ads) */}
-      <Script src="https://www.googletagmanager.com/gtag/js?id=AW-18531414588" strategy="afterInteractive" />
-      <Script id="google-ads-tag" strategy="afterInteractive">
-        {`window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-window.gtag = gtag;
-gtag('js', new Date());
-gtag('config', 'AW-18531414588');`}
-      </Script>
       {/* Fonte serifada usada nos títulos (mesma família do book do empreendimento) */}
       <link
         rel="stylesheet"
@@ -324,7 +314,7 @@ gtag('config', 'AW-18531414588');`}
           </p>
           <p>
             Intermediação: Glaucio Costa, CRECI 148047F/SP. G.Costa Gestão Imobiliária Ltda., CRECI 033282J/SP,
-            CNPJ 29.301.219/0001-02.
+            CNPJ 29.301.219/0001-02. <a href="/privacidade">Política de privacidade</a>.
           </p>
         </div>
       </footer>
