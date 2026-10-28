@@ -1,0 +1,212 @@
+/* Panorama Skyline Ibirapuera — paleta e tipografia do book do empreendimento */
+.page {
+  --green: #1f3a36;
+  --green-2: #2b4a45;
+  --rust: #b4552f;
+  --rust-dark: #96441f;
+  --sand: #e9e1d6;
+  --sand-deep: #c4b5a2;
+  --ink: #1c2624;
+  --mute: #56625f;
+  --line: rgba(28, 38, 36, 0.14);
+  --serif: 'Bodoni Moda', 'Didot', Georgia, serif;
+  --sans: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+  font-family: var(--sans);
+  color: var(--ink);
+  background: #fff;
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.page h2 {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(1.75rem, 3.4vw, 2.6rem);
+  line-height: 1.12;
+  margin-bottom: 1.1rem;
+  letter-spacing: -0.005em;
+}
+.page h3 { font-family: var(--serif); font-weight: 500; font-size: 1.45rem; line-height: 1.2; margin-bottom: 0.75rem; }
+.page p { color: var(--mute); }
+.page a:focus-visible, .page button:focus-visible, .page input:focus-visible {
+  outline: 2px solid var(--rust);
+  outline-offset: 3px;
+}
+
+.wrap { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+.section { padding: clamp(64px, 9vw, 112px) 0; }
+.sectionTight { padding: 48px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.intro { max-width: 34rem; }
+.intro p + p { margin-top: 1rem; }
+.split { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 6vw, 88px); align-items: start; }
+
+.dark { background: var(--green); color: #fff; }
+.dark p { color: rgba(255, 255, 255, 0.78); }
+.sand { background: var(--sand); }
+
+/* TOPO */
+.top {
+  position: absolute; top: 0; left: 0; right: 0; z-index: 5;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 20px clamp(20px, 4vw, 48px);
+}
+.brand { font-family: var(--serif); font-size: 1.15rem; color: #fff; }
+.brand small { font-family: var(--sans); font-size: 0.72rem; opacity: 0.7; margin-left: 6px; }
+
+/* BOTÕES */
+.btnPrimary, .btnLight, .btnGhost {
+  display: inline-flex; align-items: center; justify-content: center;
+  font-family: var(--sans); font-weight: 600; font-size: 0.92rem;
+  padding: 15px 26px; border-radius: 2px; transition: background-color 0.2s, color 0.2s;
+  cursor: pointer; border: 0; text-align: center;
+}
+.btnPrimary { background: var(--rust); color: #fff; }
+.btnPrimary:hover { background: var(--rust-dark); }
+.btnLight { background: transparent; color: #fff; box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.5); }
+.btnLight:hover { background: rgba(255, 255, 255, 0.08); }
+.btnGhost { padding: 9px 18px; font-size: 0.82rem; color: #fff; box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.45); }
+.btnGhost:hover { background: rgba(255, 255, 255, 0.1); }
+
+/* HERO */
+.hero { display: grid; grid-template-columns: 1.15fr 0.85fr; min-height: 100vh; background: var(--green); color: #fff; }
+.heroText {
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 120px clamp(24px, 5vw, 72px) 64px;
+}
+.frame {
+  position: relative; border: 6px solid var(--rust);
+  padding: clamp(18px, 3vw, 30px) clamp(18px, 3vw, 32px);
+  margin-bottom: 36px; overflow: hidden;
+}
+/* Faixa de linhas verticais: o "brise" do logotipo do Panorama */
+.frameLines {
+  position: absolute; top: 0; bottom: 0; right: 0; width: 46%;
+  background: repeating-linear-gradient(90deg, var(--rust) 0 1px, transparent 1px 7px);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0 8%, #000 8% 30%, transparent 30% 44%, #000 44% 52%, transparent 52% 70%, #000 70% 96%, transparent 96%);
+  mask-image: linear-gradient(90deg, transparent 0 8%, #000 8% 30%, transparent 30% 44%, #000 44% 52%, transparent 52% 70%, #000 70% 96%, transparent 96%);
+  opacity: 0.85; pointer-events: none;
+}
+.logo {
+  position: relative; z-index: 1;
+  font-family: var(--sans); font-weight: 500; text-transform: uppercase;
+  font-size: clamp(2.1rem, 5.6vw, 4.6rem); letter-spacing: 0.16em; line-height: 1;
+}
+.logo span {
+  display: block; margin-top: 12px; font-size: clamp(0.7rem, 1.2vw, 0.9rem);
+  letter-spacing: 0.42em; font-weight: 500; color: var(--sand-deep);
+}
+.heroLead { color: #fff !important; font-family: var(--serif); font-size: clamp(1.25rem, 2.1vw, 1.6rem); line-height: 1.35; max-width: 32rem; }
+.heroSub { margin-top: 14px; max-width: 30rem; color: rgba(255, 255, 255, 0.75) !important; }
+.ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+.facts {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
+  margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(255, 255, 255, 0.18);
+}
+.facts dt { font-size: 0.75rem; color: var(--sand-deep); margin-bottom: 4px; }
+.facts dd { font-size: 0.92rem; font-weight: 600; line-height: 1.35; }
+.heroImg { position: relative; min-height: 420px; }
+.heroImg img { object-fit: cover; object-position: center top; }
+.heroImg::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 120px; z-index: 1; background: linear-gradient(rgba(16, 32, 29, 0.55), transparent); pointer-events: none; }
+.caption {
+  position: absolute; right: 14px; bottom: 12px; font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.85); text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* OBRA */
+.obraGrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 44px; }
+.obraGrid img { width: 100%; height: 100%; aspect-ratio: 3 / 4; object-fit: cover; }
+.note { font-size: 0.82rem; margin-top: 14px; }
+.noteLight { font-size: 0.78rem; margin-top: 20px; }
+
+/* BARRAS DE PREÇO */
+.bars { list-style: none; display: grid; gap: 18px; }
+.bars li { display: grid; grid-template-columns: 1fr; gap: 6px; }
+.barLabel { font-size: 0.86rem; color: rgba(255, 255, 255, 0.8); }
+.barTrack { display: flex; align-items: center; height: 10px; background: rgba(255, 255, 255, 0.08); }
+.barFill { display: block; height: 100%; background: var(--sand-deep); }
+.barValue { font-size: 0.86rem; font-weight: 600; }
+.barHi .barLabel { color: #fff; font-weight: 600; }
+.barHi .barTrack { height: 18px; }
+.barHi .barFill { background: var(--rust); }
+.barHi .barValue { font-family: var(--serif); font-size: 1.5rem; font-weight: 500; color: #fff; }
+
+/* NEGOCIAÇÃO */
+.scarcity { color: var(--ink) !important; font-weight: 600; border-left: 3px solid var(--rust); padding-left: 16px; }
+.points { list-style: none; display: grid; gap: 0; }
+.points li { padding: 20px 0; border-top: 1px solid var(--line); color: var(--mute); }
+.points li:last-child { border-bottom: 1px solid var(--line); }
+.points strong { display: block; color: var(--ink); font-weight: 600; margin-bottom: 2px; }
+
+/* APARTAMENTO */
+.wide { margin-top: 44px; }
+.wide img, .duo img, .gallery img { width: 100%; height: auto; display: block; }
+.page figcaption { font-size: 0.76rem; color: var(--mute); margin-top: 8px; }
+.dark figcaption { color: rgba(255, 255, 255, 0.6); }
+.duo { display: grid; grid-template-columns: 1.3fr 1fr; gap: 24px; margin-top: 24px; align-items: stretch; }
+.planCard { background: #fff; padding: clamp(24px, 3vw, 40px); display: flex; flex-direction: column; justify-content: center; }
+.planCard p { margin-bottom: 22px; }
+.planCard a { align-self: flex-start; }
+
+/* LAZER */
+.lazerHead { align-items: end; }
+.amenities { list-style: none; columns: 2; column-gap: 32px; }
+.amenities li { padding: 9px 0; border-bottom: 1px solid var(--line); break-inside: avoid; font-size: 0.92rem; }
+.gallery img { aspect-ratio: 2 / 1; object-fit: cover; }
+.gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 24px 16px; margin-top: 48px; }
+
+/* LOCALIZAÇÃO */
+.textLink { display: inline-block; margin-top: 18px; color: #fff; font-weight: 600; border-bottom: 1px solid var(--rust); padding-bottom: 2px; }
+
+/* EQUIPE */
+.team { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.team dt { font-size: 0.75rem; color: var(--mute); margin-bottom: 4px; }
+.team dd { font-family: var(--serif); font-size: 1.15rem; }
+
+/* FORMULÁRIO */
+.form { background: #fff; padding: clamp(24px, 3vw, 40px); display: grid; gap: 18px; }
+.field { display: grid; gap: 6px; font-size: 0.85rem; font-weight: 600; }
+.field input {
+  font: inherit; font-weight: 400; font-size: 1rem; padding: 13px 14px;
+  border: 1px solid #cfc5b8; border-radius: 2px; background: #fff; color: var(--ink);
+}
+.choices { border: 0; display: flex; flex-wrap: wrap; gap: 8px 20px; font-size: 0.92rem; }
+.choices legend { font-size: 0.85rem; font-weight: 600; margin-bottom: 8px; width: 100%; }
+.choices label, .check { display: inline-flex; align-items: center; gap: 8px; cursor: pointer; }
+.check { font-size: 0.92rem; }
+.choices input, .check input { accent-color: var(--rust); width: 18px; height: 18px; }
+.error { color: #a12a14 !important; font-size: 0.86rem; font-weight: 600; }
+.formNote { font-size: 0.78rem; }
+.contactLine { margin-top: 20px; }
+.contactLine a { color: var(--ink); font-weight: 600; border-bottom: 1px solid var(--rust); }
+
+/* RODAPÉ LEGAL */
+.legal { background: var(--green); padding: 40px 0 120px; }
+.legal p { font-size: 0.72rem; line-height: 1.6; color: rgba(255, 255, 255, 0.62); max-width: 62rem; }
+.legal p + p { margin-top: 10px; }
+
+/* BARRA FIXA NO CELULAR */
+.mobileBar { display: none; }
+
+@media (max-width: 900px) {
+  .hero { grid-template-columns: 1fr; min-height: 0; }
+  .heroImg { order: -1; min-height: 62vh; }
+  .heroText { padding: 40px 24px 56px; }
+  .facts { grid-template-columns: 1fr 1fr; }
+  .split, .duo { grid-template-columns: 1fr; }
+  .team { grid-template-columns: 1fr 1fr; }
+  .obraGrid { grid-template-columns: 1fr 1fr; }
+  .mobileBar {
+    display: block; position: fixed; left: 0; right: 0; bottom: 0; z-index: 20;
+    padding: 10px 16px calc(10px + env(safe-area-inset-bottom, 0px));
+    background: rgba(255, 255, 255, 0.96); border-top: 1px solid var(--line);
+  }
+  .mobileBar a { width: 100%; }
+}
+@media (max-width: 600px) {
+  .gallery { grid-template-columns: 1fr; }
+  .amenities { columns: 1; }
+  .ctas a { width: 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .page * { transition: none !important; }
+}
