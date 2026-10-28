@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
+import Script from 'next/script';
 import WppButton from '@/components/panorama/WppButton';
 import LeadForm from '@/components/panorama/LeadForm';
 import s from './panorama.module.css';
@@ -42,6 +43,15 @@ const fmt = (v: number) => `R$ ${v.toLocaleString('pt-BR', { minimumFractionDigi
 export default function Panorama() {
   return (
     <div className={s.page}>
+      {/* Google tag (Google Ads) */}
+      <Script src="https://www.googletagmanager.com/gtag/js?id=AW-18531414588" strategy="afterInteractive" />
+      <Script id="google-ads-tag" strategy="afterInteractive">
+        {`window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+window.gtag = gtag;
+gtag('js', new Date());
+gtag('config', 'AW-18531414588');`}
+      </Script>
       {/* Fonte serifada usada nos títulos (mesma família do book do empreendimento) */}
       <link
         rel="stylesheet"
