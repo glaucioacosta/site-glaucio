@@ -7,11 +7,11 @@ import s from './panorama.module.css';
 export const metadata: Metadata = {
   title: 'Panorama Skyline Ibirapuera | Apartamentos de 4 suítes em Moema',
   description:
-    'Torre única com 28 apartamentos de 248 m², 4 suítes e 4 vagas em Moema, perto do Parque Ibirapuera. Negociação direta com os sócios do projeto e visita à obra.',
+    'Torre única com 28 apartamentos de 248 m², 4 suítes e 4 vagas em Moema, perto do Parque Ibirapuera. Visita à obra e condições de compra caso a caso.',
   alternates: { canonical: '/panorama' },
   openGraph: {
     title: 'Panorama Skyline Ibirapuera | Moema',
-    description: 'Apartamentos de 248 m² e 4 suítes, perto do Ibirapuera. Negociação direta com os sócios.',
+    description: 'Apartamentos de 248 m² e 4 suítes, perto do Ibirapuera. Entrega em maio de 2027.',
     images: ['/panorama/fachada.jpg'],
     locale: 'pt_BR',
     type: 'website',
@@ -23,7 +23,7 @@ const precos = [
   { local: 'Itaim Bibi', valor: 45 },
   { local: 'Eixo República do Líbano', valor: 45 },
   { local: 'Moema Pássaros', valor: 32 },
-  { local: 'Panorama Skyline Ibirapuera', valor: 25.5, destaque: true },
+  { local: 'Panorama Skyline Ibirapuera', valor: 26.5, destaque: true },
 ];
 
 const lazer = [
@@ -66,9 +66,6 @@ export default function Panorama() {
           <p className={s.heroLead}>
             Torre única com 28 apartamentos de 248 m², 4 suítes e 4 vagas, em Moema, perto do Parque Ibirapuera.
           </p>
-          <p className={s.heroSub}>
-            Compra direta com os sócios do projeto, que também vão morar no prédio.
-          </p>
           <div className={s.ctas}>
             <WppButton placement="hero" className={s.btnPrimary}>Conversar no WhatsApp</WppButton>
             <WppButton placement="hero_visita" intent="e gostaria de agendar uma visita à obra" className={s.btnLight}>
@@ -79,7 +76,7 @@ export default function Panorama() {
             <div><dt>Por andar</dt><dd>2 apartamentos</dd></div>
             <div><dt>Acesso</dt><dd>Elevador privativo</dd></div>
             <div><dt>Garagem</dt><dd>4 vagas e depósito</dd></div>
-            <div><dt>Status</dt><dd>Obra em andamento</dd></div>
+            <div><dt>Entrega</dt><dd>Maio de 2027</dd></div>
           </dl>
         </div>
         <div className={s.heroImg}>
@@ -143,34 +140,26 @@ export default function Panorama() {
                   <span className={s.barTrack}>
                     <span className={s.barFill} style={{ width: `${(p.valor / 50) * 100}%` }} />
                   </span>
-                  <span className={s.barValue}>{fmt(p.valor)}</span>
+                  <span className={s.barValue}>{p.destaque ? `A partir de ${fmt(p.valor)}` : fmt(p.valor)}</span>
                 </li>
               ))}
             </ul>
             <p className={s.noteLight}>
-              Valores médios de referência para imóveis de alto padrão nessas regiões. O valor do Panorama é
-              uma média e varia conforme andar e unidade.
+              Valores médios de referência para imóveis de alto padrão nessas regiões. O valor do Panorama é o
+              ponto de partida e varia conforme andar e unidade.
             </p>
           </div>
         </div>
       </section>
 
-      {/* NEGOCIAÇÃO */}
+      {/* CONDIÇÕES */}
       <section className={s.section}>
         <div className={`${s.wrap} ${s.split}`}>
           <div className={s.intro}>
-            <h2>Negociação direta, com quem vai ser seu vizinho</h2>
-            <p>
-              Os sócios do projeto vão morar no Panorama e conduzem pessoalmente as negociações. Por isso existe
-              um cuidado real com quem vai fazer parte do prédio.
-            </p>
-            <p className={s.scarcity}>
-              Metade das unidades é negociada diretamente pela família dos sócios. A outra metade está
-              disponível agora.
-            </p>
+            <h2>Condições de compra</h2>
+            <p>Negociação feita caso a caso, com acesso à obra e a quem está construindo.</p>
           </div>
           <ul className={s.points}>
-            <li><strong>Conversa presencial com os donos.</strong> Proposta e condições discutidas sem intermediação de stand.</li>
             <li><strong>Fluxo de pagamento caso a caso.</strong> Condições melhores para quem faz aportes durante a obra.</li>
             <li><strong>Visita à obra.</strong> Com o engenheiro responsável e o dono da construtora.</li>
             <li><strong>Personalização da planta.</strong> Dentro do prazo definido pela construtora.</li>
