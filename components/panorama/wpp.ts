@@ -1,8 +1,14 @@
 export const WPP_NUMBER = '5511990270978';
 
+/** Google Ads */
+export const GADS_ID = 'AW-18531414588';
+/** Rótulo da conversão "Lead" (Metas → Conversões → ação → Configuração da tag). Cole entre as aspas. */
+export const GADS_LEAD_LABEL = '';
+
 declare global {
   interface Window {
-    dataLayer?: Record<string, unknown>[];
+    dataLayer?: unknown[];
+    gtag?: (...args: unknown[]) => void;
   }
 }
 
@@ -23,4 +29,9 @@ export function track(event: string, data: Record<string, unknown> = {}) {
   if (typeof window === 'undefined') return;
   window.dataLayer = window.dataLayer || [];
   window.dataLayer.push({ event, ...data });
+
+  // Conversão do Google Ads: clique no WhatsApp ou envio do formulário
+  if (GADS_LEAD_LABEL && typeof window.gtag === 'function' && (event === 'whatsapp_click' || event === 'lead_form_submit')) {
+    window.gtag('event', 'conversion', { send_to: `${GADS_ID}/${GADS_LEAD_LABEL}`, transport_type: 'beacon' });
+  }
 }
