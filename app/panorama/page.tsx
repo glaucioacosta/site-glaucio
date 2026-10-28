@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Script from 'next/script';
 import WppButton from '@/components/panorama/WppButton';
 import LeadForm from '@/components/panorama/LeadForm';
+import PanoramaVideo from '@/components/panorama/PanoramaVideo';
 import s from './panorama.module.css';
 
 export const metadata: Metadata = {
@@ -98,6 +99,19 @@ gtag('config', 'AW-18531414588');`}
             sizes="(max-width: 900px) 100vw, 45vw"
           />
           <span className={s.caption}>Perspectiva ilustrada da fachada</span>
+        </div>
+      </section>
+
+      {/* VÍDEO */}
+      <section className={s.sectionVideo}>
+        <div className={s.wrap}>
+          <div className={s.intro}>
+            <h2>Conheça o Panorama em 1 minuto e meio</h2>
+            <p>A localização no eixo da República do Líbano, a arquitetura e o lazer, em um filme curto.</p>
+          </div>
+          <div className={s.videoFrame}>
+            <PanoramaVideo />
+          </div>
         </div>
       </section>
 
